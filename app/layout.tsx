@@ -1,6 +1,8 @@
+"use client";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Navbar from "../components/navbar"
+import Navbar from "../components/navbar";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,10 +16,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [mode, setMode] = useState("");
+
+  //Callback function to handle data passed from the child
+  const handleDataFromChild = (data: any) => {
+    setMode(data);
+  };
+
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-[#FAFAFA]`}>
-        <Navbar />
+    <html lang="en" className={mode}>
+      <body className={`${inter.className} bg-[#FAFAFA] dark:bg-[#202C36]`}>
+        <Navbar onData={handleDataFromChild} />
         {children}
       </body>
     </html>
