@@ -1,8 +1,10 @@
+"use client"
 import React from "react";
 import jsonData from "../src/data.json";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
 // import data.json
 // find data by prop.name
@@ -14,8 +16,10 @@ const Detail = (props: any) => {
     // Go back to the previous page
     router.back();
   };
+  const searchParams = useSearchParams();
+  const search = searchParams.get("data");
   const flagData = jsonData;
-  const foundObjects = flagData.filter((item) => item.name === props.prop);
+  const foundObjects = flagData.filter((item) => item.name === search);
 
   const lang = [];
   for (let i = 0; i < foundObjects[0].languages.length; i++) {
@@ -30,7 +34,7 @@ const Detail = (props: any) => {
     }
   }
 
- return (
+  return (
     <>
       <div className="lg:max-w-[1440px] mx-auto">
         <div className="pt-12 px-8">

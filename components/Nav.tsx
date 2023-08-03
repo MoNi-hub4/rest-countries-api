@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BsMoonFill } from "react-icons/bs";
 import { BiSolidSun } from "react-icons/bi";
 
-const navbar = ({ onData }: any) => {
+const Navbar = ({ onData }: any) => {
   const [mode, setMode] = useState("light");
 
   const handleClick = () => {
@@ -31,4 +31,4 @@ const navbar = ({ onData }: any) => {
   );
 };
 
-export default navbar;
+export default Navbar;
